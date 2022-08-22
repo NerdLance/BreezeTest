@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\VoteController;
 use App\Http\Controllers\ProjectController;
 
 /*
@@ -40,7 +41,7 @@ Route::get('/projects/manage', [ProjectController::class, 'manage'])->middleware
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('projects-show');
 
 // Vote on a Project
-Route::post('/vote/{id}', [VoteController::class, 'store'])->middleware(['auth'])->name('votes-vote');
+Route::post('/vote/{project}', [VoteController::class, 'store'])->middleware(['auth'])->name('votes-vote');
 
 // Show App Dashboard
 Route::get('/dashboard', function () {

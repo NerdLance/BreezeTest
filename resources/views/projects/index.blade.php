@@ -18,14 +18,15 @@
                             @foreach($projects as $project)
                                 <tr class='hover:bg-gray-50'>
                                     <td class='w-1/5 text-center py-6'>
-                                        <div class='text-2xl'>0</div>
+                                        <div class='text-2xl'>{{$project->votes()->count()}}</div>
                                         <div class='text-xl mb-1'>Votes</div>
                                         <div class='w-1/2 mx-auto border-b border-gray-300'></div>
-                                        <a class='' href="{{route('votes-vote', $project->id)}}">
-                                            <button class='mt-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150'>
+                                        <form action="{{route('votes-vote', $project->id)}}" method='POST'>
+                                            @csrf
+                                            <button type='submit' class='mt-4 inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring ring-gray-300 disabled:opacity-25 transition ease-in-out duration-150'>
                                                 Vote
                                             </button>
-                                        </a>
+                                        </form>
                                     </td>
                                     <td class='w-4/5 my-6'>
                                         <p class='text-xl'>{{$project->title}}</p>
