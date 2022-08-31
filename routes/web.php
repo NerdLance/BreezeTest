@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VoteController;
 use App\Http\Controllers\ProjectController;
 
@@ -16,9 +17,7 @@ use App\Http\Controllers\ProjectController;
 */
 
 // Home Page
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Random Test Page for Layout
 Route::get('/test', function () {
